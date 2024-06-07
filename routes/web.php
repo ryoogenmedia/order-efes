@@ -1,0 +1,49 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\UserController;
+
+Route::controller(LandingController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+});
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/register', 'register')->name('register');
+});
+
+// GUEST
+
+// Route::controller(AuthController::class)->middleware('guest')->group(function () {
+//     Route::get('/login', 'login')->name('login');
+// });
+// GUEST END
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'login')->name('login');
+});
+
+
+// AUTH ADMIN
+Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->controller(AdminController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/tentang', 'tentang')->name('tentang');
+    Route::get('/produk', 'produk')->name('produk');
+    Route::get('/kategori', 'kategori')->name('kategori');
+    Route::get('/metodePengiriman', 'metodePengiriman')->name('metodePengiriman');
+    Route::get('/userList', 'userList')->name('userList');
+    Route::get('/pesanan', 'pesanan')->name('pesanan');
+    Route::get('/laporan', 'laporan')->name('laporan');
+    Route::get('/testimoni', 'testimoni')->name('testimoni');
+    Route::get('/kontak', 'kontak')->name('kontak');
+    Route::get('/logout', 'logout')->name('logout');
+});
+// AUTH ADMIN END
+
+// AUTH USER 
+Route::middleware(['auth:web'])->prefix('dashboard')->name('dashboard.')->controller(UserController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/logout', 'logout')->name('logout');
+});
+// AUTH USER END
