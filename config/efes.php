@@ -19,13 +19,17 @@ return [
                 'title' => 'produk',
                 'url' => 'produk',
                 'sub' => [
-                    'kategori' => [
-                        'title' => 'kategori',
-                        'url' => 'kategori',
-                    ],
+                    // 'kategori' => [
+                    //     'title' => 'kategori',
+                    //     'url' => 'kategori',
+                    // ],
                     'List' => [
                         'title' => 'list produk',
                         'url' => 'produk',
+                    ],
+                    'Create' => [
+                        'title' => 'Create Produk ',
+                        'url' => 'produk.create',
                     ],
                 ],
                 'icon' => 'ri-shopping-cart-line'

@@ -40,6 +40,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
         Route::get('/testimoni', 'testimoni')->name('testimoni');
         Route::get('/kontak', 'kontak')->name('kontak');
         Route::get('/produk-list', 'produk_list')->name('produk');
+        Route::get('/produk-create', 'produk_create')->name('produk.create');
     });
     Route::controller(KategoriController::class)->group(function () {
         Route::get('/kategori', 'index')->name('kategori');

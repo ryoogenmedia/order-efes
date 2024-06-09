@@ -10,9 +10,8 @@
                     <div class="row g-4 mb-3" wire:ignore>
                         <div class="col-sm-auto">
                             <div>
-                                <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i> Add</button>
+                                <a href="{{ route('admin.produk.create') }}" class="btn btn-success add-btn"><i
+                                        class="ri-add-line align-bottom me-1"></i> Add</a>
                             </div>
                         </div>
                         <div class="col-sm">
@@ -42,13 +41,14 @@
                                     <td class="customer_name">{{ $produk->nama_produk }}<span
                                             class="badge badge-label bg-info"><i class="mdi mdi-circle-medium"></i>
                                             {{ $produk->kategori->nama_kategori }}</span></td>
-                                    <td class="customer_name">{{ number_format($produk->harga , 2 , ',' , '.') }}</td>
+                                    <td class="customer_name">Rp {{ number_format($produk->harga , 2 , ',' , '.') }}
+                                    </td>
                                     <td class="gambar">
                                         <div class="d-flex justify-content-center align-items-center"
                                             style="height: 100%;">
                                             <div class="avatar-xl text-center">
-                                                <img src="{{ asset(env('PRODUK_ASSET').$produk->gambar ) }}"
-                                                    class="img-fluid" alt="Responsive image">
+                                                <img src="{{ asset(Storage::url($produk->gambar)) }}" class="img-fluid"
+                                                    alt="Responsive image">
                                             </div>
                                         </div>
                                     </td>
@@ -60,8 +60,7 @@
                                             </div>
                                             <div class="remove">
                                                 <button class="btn btn-sm btn-danger remove-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal">Remove</button>
+                                                    wire:click="remove({{ $produk->id }})">Remove</button>
                                             </div>
                                         </div>
                                     </td>

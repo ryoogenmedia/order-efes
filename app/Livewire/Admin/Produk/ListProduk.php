@@ -15,6 +15,11 @@ class ListProduk extends Component
 
     protected $listeners = ['kategori-change' => 'changeId'];
 
+    #[On('kategori-deleted')]
+    public function kategoriDelete()
+    {
+        $this->render();
+    }
     public function changeId($id)
     {
         $this->kategori_id = $id;
@@ -36,5 +41,22 @@ class ListProduk extends Component
             'produks' => $this->produks,
             'kategoris' => $this->kategoris
         ]);
+    }
+
+    public function remove($id)
+    {
+        $find = Produk::find($id);
+        if ($find != null) {
+            try {
+                $find->delete();
+                $this->dispatch('produk-deleted');
+                flash()->success('Deleted Success');
+            } catch (\Exception $e) {
+                flash()->error('Deleted Failed');
+            }
+        } else {
+
+            flash()->error('Not Found');
+        }
     }
 }

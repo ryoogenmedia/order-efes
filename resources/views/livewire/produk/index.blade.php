@@ -31,8 +31,7 @@
                                     class="mdi mdi-cards-heart fs-16"></i></button>
                         </div>
                         <div class="explore-place-bid-img">
-                            <img src="{{ asset('assets/images/products/img-1.png') }}" alt=""
-                                class="card-img-top explore-img" />
+                            <img src="{{ Storage::url($produk->gambar)}}" alt="" class="card-img-top explore-img" />
                             <div class="bg-overlay"></div>
                             <div class="place-bid-btn">
                                 <a href="#!" class="btn btn-success"><i class=" align-bottom me-1"></i>See More</a>
