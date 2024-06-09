@@ -78,5 +78,53 @@ return [
 
             ],
         ],
-    ]
+    ],
+    'wilayah' => [
+        'provinsi' => [
+            'banten' => [
+                'kota' => [
+                    'Serang' => [
+                        'kecamatan' => [
+                            'nama' => ['Curug', 'Kasemen', 'Taktakan', 'Walantaka', 'Cipocok Jaya']
+                        ]
+                    ],
+                    'Tangerang' => [
+                        'kecamatan' => [
+                            'nama' => ['Ciledug', 'Cipondoh', 'Karawaci', 'Tangerang', 'Periuk']
+                        ]
+                    ]
+                ]
+            ],
+            'jawa_barat' => [
+                'kota' => [
+                    'Bandung' => [
+                        'kecamatan' => [
+                            'nama' => ['Cibiru', 'Cicendo', 'Lengkong', 'Regol', 'Ujung Berung']
+                        ]
+                    ],
+                    'Bogor' => [
+                        'kecamatan' => [
+                            'nama' => ['Bogor Barat', 'Bogor Selatan', 'Bogor Tengah', 'Bogor Timur', 'Bogor Utara']
+                        ]
+                    ]
+                ]
+            ],
+            'jawa_tengah' => [
+                'kota' => [
+                    'Semarang' => [
+                        'kecamatan' => [
+                            'nama' => ['Banyumanik', 'Gajah Mungkur', 'Pedurungan', 'Semarang Barat', 'Semarang Timur']
+                        ]
+                    ],
+                    'Surakarta' => [
+                        'kecamatan' => [
+                            'nama' => ['Banjarsari', 'Jebres', 'Laweyan', 'Serengan', 'Surakarta']
+                        ]
+                    ]
+                ]
+            ],
+            // Daftar provinsi, kota, dan kecamatan lainnya dapat ditambahkan di sini
+        ]
+    ],
+
 ];

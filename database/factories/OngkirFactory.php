@@ -17,7 +17,11 @@ class OngkirFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'provinsi' => fake()->city(),
+            'kota' => fake()->city(),
+            'kecamatan' => fake()->city(),
+            'metode' => 'JNE',
+            'harga' => fake()->randomNumber(),
         ];
     }
 }

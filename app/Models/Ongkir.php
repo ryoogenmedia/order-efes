@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Ongkir extends Model
 {
     use HasFactory;
-    protected $guarded = [
-        'id'
+    protected $fillable = [
+        'provinsi', 'kota', 'kecamatan', 'metode',
+        'harga'
     ];
 }

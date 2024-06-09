@@ -21,6 +21,11 @@ class AdminController extends Controller
         return view('admin.produk.create');
     }
 
+    public function metodePengiriman()
+    {
+        return view('admin.ongkir.list');
+    }
+
 
     public function logout()
     {
