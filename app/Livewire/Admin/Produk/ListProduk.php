@@ -59,4 +59,9 @@ class ListProduk extends Component
             flash()->error('Not Found');
         }
     }
+
+    public function editClik($id)
+    {
+        $this->dispatch('produk-edit-click', $id);
+    }
 }

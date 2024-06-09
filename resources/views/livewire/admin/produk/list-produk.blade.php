@@ -55,10 +55,11 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
-                                                <button class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                <button data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                    class="btn btn-sm btn-success edit-item-btn"
+                                                    wire:click="editClik({{ $produk->id }})">Edit</button>
                                             </div>
-                                            <div class="remove">
+                                            <div class=" remove">
                                                 <button class="btn btn-sm btn-danger remove-item-btn"
                                                     wire:click="remove({{ $produk->id }})">Remove</button>
                                             </div>
@@ -91,4 +92,21 @@
         </div>
         <!-- end col -->
     </div>
+    {{-- MODALS --}}
+    <div id="modalEdit" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+        style="display: dblok;" wire:ignore.self>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        @livewire('admin.produk.createProduk')
+                    </div>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>
