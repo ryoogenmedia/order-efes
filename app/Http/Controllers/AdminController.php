@@ -11,6 +11,11 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
+    public function produk_list()
+    {
+        return view('admin.produk.index');
+    }
+
 
     public function logout()
     {

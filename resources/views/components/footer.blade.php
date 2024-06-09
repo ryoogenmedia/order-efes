@@ -4,7 +4,7 @@
             <div class="col-lg-4 mt-4">
                 <div>
                     <div>
-                        <img src="assets/images/logo-light.png" alt="logo light" height="17">
+                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="logo light" height="17">
                     </div>
                     <div class="mt-4">
                         <p>Premium Multipurpose Admin & Dashboard Template</p>

@@ -19,8 +19,6 @@
 <!-- Dashboard init -->
 <script src="{{ asset('assets/js/pages/dashboard-ecommerce.init.js') }}"></script>
 
-<!-- App js -->
-<script src="{{ asset('assets/js/app.js') }}"></script>
 <script src="{{ asset('assets/js/pages/nft-landing.init.js') }}"></script>
 
 <script src="{{ asset('assets/js/pages/job-lading.init.js') }}"></script>
@@ -36,3 +34,17 @@
 <script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
 <!-- password create init -->
 <script src="{{ asset('assets/js/pages/passowrd-create.init.js') }}"></script>
+<!-- prismjs plugin -->
+<script src="{{ asset('assets/libs/prismjs/prism.js') }}"></script>
+<script src="{{ asset('assets/libs/list.js/list.min.js') }}"></script>
+<script src="{{ asset('assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
+
+<!-- listjs init -->
+<script src="{{ asset('assets/js/pages/listjs.init.js') }}"></script>
+
+<!-- Sweet Alerts js -->
+<script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+
+
+<!-- App js -->
+<script src="{{ asset('assets/js/app.js') }}"></script>

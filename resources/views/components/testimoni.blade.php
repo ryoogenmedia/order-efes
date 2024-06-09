@@ -20,7 +20,7 @@
                         <div class="swiper-slide">
                             <div class="card text-center">
                                 <div class="card-body p-4">
-                                    <img src="assets/images/users/{{ $testi['avatar'] }}" alt=""
+                                    <img src="{{ asset('assets/images/users/' . $testi['avatar']) }}" alt=""
                                         class="rounded-circle avatar-md mx-auto d-block">
                                     <h5 class="fs-17 mt-3 mb-2"></h5>
                                     <p class="text-muted fs-13 mb-3">{{ $testi['nama'] }}</p>

@@ -14,18 +14,16 @@
                                 today.</p>
                         </div>
                         <div class="mt-3 mt-lg-0">
-                            <form action="javascript:void(0);">
-                                <div class="row g-3 mb-0 align-items-center">
-                                    <!--end col-->
-                                    <div class="col-auto">
-                                        <button type="button" class="btn btn-soft-success shadow-none"><i
-                                                class="ri-add-circle-line align-middle me-1"></i>
-                                            Add Product</button>
-                                    </div>
-                                    <!--end col-->
+                            <div class="row g-3 mb-0 align-items-center">
+                                <!--end col-->
+                                <div class="col-auto">
+                                    <a href="{{ route('admin.produk') }}" class="btn btn-soft-success shadow-none"><i
+                                            class="ri-add-circle-line align-middle me-1"></i>
+                                        Add Product</a>
                                 </div>
-                                <!--end row-->
-                            </form>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
                         </div>
                     </div><!-- end card header -->
                 </div>
@@ -40,5 +38,6 @@
 
     </div> <!-- end col -->
 
-</div> <!-- end col -->
+</div>
+<!-- end col -->
 @endsection
