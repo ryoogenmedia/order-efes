@@ -89,7 +89,8 @@
 
                                 <tr>
 
-                                    <td class="id"><a href="apps-ecommerce-order-details.html"
+                                    <td class="id"><a
+                                            href="{{ route('admin.transaksi.detail' ,['id' =>  $transaksi->id]) }}"
                                             class="fw-medium link-primary">{{ $transaksi->kode_transaksi }}</a></td>
                                     <td class="customer_name">{{ $transaksi->user->nama }}</td>
                                     <td class="product_name">
@@ -160,7 +161,7 @@
                                         <ul class="list-inline hstack gap-2 mb-0">
                                             <li class="list-inline-item" data-bs-toggle="tooltip"
                                                 data-bs-trigger="hover" data-bs-placement="top" title="View">
-                                                <a href="apps-ecommerce-order-details.html"
+                                                <a href="{{ route('admin.transaksi.detail' ,['id' =>  $transaksi->id]) }}"
                                                     class="text-primary d-inline-block">
                                                     <i class="ri-eye-fill fs-16"></i>
                                                 </a>

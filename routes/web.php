@@ -31,14 +31,25 @@ Route::controller(AuthController::class)->group(function () {
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/', 'index')->name('index');
+
         Route::get('/logout', 'logout')->name('logout');
+
         Route::get('/tentang', 'tentang')->name('tentang');
+
         Route::get('/metodePengiriman', 'metodePengiriman')->name('metodePengiriman');
+
         Route::get('/userList', 'userList')->name('userList');
+
         Route::get('/transaksi', 'transaksi')->name('transaksi');
+        Route::get('/transaksi/{id}', 'transaksiDetail')->name('transaksi.detail');
+        Route::get('/download/{path}/{filename}', 'download')->name('download');
+
         Route::get('/laporan', 'laporan')->name('laporan');
+
         Route::get('/testimoni', 'testimoni')->name('testimoni');
+
         Route::get('/kontak', 'kontak')->name('kontak');
+
         Route::get('/produk-list', 'produk_list')->name('produk');
         Route::get('/produk-create', 'produk_create')->name('produk.create');
     });

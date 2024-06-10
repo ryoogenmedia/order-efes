@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
+
 class AdminController extends Controller
 {
     public function index()
@@ -32,8 +34,19 @@ class AdminController extends Controller
     {
         return view('admin.transaksi.listTransaksi');
     }
+    public function transaksiDetail($id)
+    {
+        return view('admin.transaksi.detailTransaksi', ['id' => $id]);
+    }
 
 
+
+
+    public function download($path, $filename)
+    {
+        $path = public_path('/storage/' . $path . '/' . $filename);
+        return response()->download($path);
+    }
     public function logout()
     {
         auth()->guard('admin')->logout();
