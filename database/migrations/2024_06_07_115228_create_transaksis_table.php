@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->string('kode_transaksi');
-            $table->string('metode_pengiriman');
             $table->string('alamat');
             $table->string('resi');
             $table->string('bukti_kirim');
             $table->string('total');
             $table->string('status');
+            $table->foreignId('ongkir_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Ongkir;
 use App\Models\DetailTransaksi;
 use App\Models\InformasiPembayaran;
 use Illuminate\Database\Eloquent\Model;
@@ -29,5 +30,10 @@ class Transaksi extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function ongkir(): BelongsTo
+    {
+        return $this->belongsTo(Ongkir::class);
     }
 }

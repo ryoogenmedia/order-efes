@@ -166,14 +166,14 @@
                         <!--end row-->
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" wire:ignore.self>
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal"
                         wire:click='closeModal()'>Close</button>
                     @if ($isUpdate == false)
-                    <button type="button" class="btn btn-success" wire:click='create()' wire:loading.attr='disabled'
+                    <button type="button" class="btn btn-success" wire:click='save()' wire:loading.attr='disabled'
                         data-bs-dismiss="modal">Create</button>
                     @elseif($isUpdate == true)
-                    <button type="button" class="btn btn-info" wire:loading.attr='disabled' data-bs-dismiss="modal"
+                    <button type=" button" class="btn btn-info" wire:loading.attr='disabled' data-bs-dismiss="modal"
                         wire:click='update()'>Update</button>
                     @endif
                 </div>

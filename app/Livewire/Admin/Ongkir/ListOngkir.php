@@ -12,7 +12,6 @@ class ListOngkir extends Component
 
     protected $listeners = (['ongkir-created' => 'render']);
 
-    #[Validate('required')]
     public $ongkir_id;
 
     #[Validate('required')]
@@ -64,7 +63,7 @@ class ListOngkir extends Component
         );
     }
 
-    public function create()
+    public function save()
     {
         $this->validate();
         $data = [
@@ -75,10 +74,14 @@ class ListOngkir extends Component
             'harga' => $this->harga,
         ];
 
+
         try {
-            Ongkir::create($data);
-            flash()->success('Created Success');
-            $this->dispatch('ongkir-created');
+            if (Ongkir::create($data)) {
+                flash()->success('Created Success');
+                $this->dispatch('ongkir-created');
+            } else {
+                flash()->error('Created Failed');
+            }
         } catch (\Exception $e) {
             flash()->error('Internal Server Error');
         } finally {
@@ -98,9 +101,13 @@ class ListOngkir extends Component
         ];
 
         try {
-            Ongkir::find($this->ongkir_id)->update($data);
-            flash()->success('Updated Success');
-            $this->dispatch('ongkir-created');
+            if ($this->ongkir_id != null) {
+                Ongkir::find($this->ongkir_id)->update($data);
+                flash()->success('Updated Success');
+                $this->dispatch('ongkir-created');
+            } else {
+                flash()->error('Not Found');
+            }
         } catch (\Exception $e) {
             flash()->error('Internal Server Error');
         } finally {

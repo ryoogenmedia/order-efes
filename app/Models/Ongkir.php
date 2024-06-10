@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Transaksi;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ongkir extends Model
 {
@@ -12,4 +14,9 @@ class Ongkir extends Model
         'provinsi', 'kota', 'kecamatan', 'metode',
         'harga'
     ];
+
+    public function transaksi(): HasMany
+    {
+        return $this->hasMany(Transaksi::class);
+    }
 }

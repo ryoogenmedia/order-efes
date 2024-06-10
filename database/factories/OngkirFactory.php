@@ -21,7 +21,7 @@ class OngkirFactory extends Factory
             'kota' => fake()->city(),
             'kecamatan' => fake()->city(),
             'metode' => 'JNE',
-            'harga' => fake()->randomNumber(),
+            'harga' => fake()->randomNumber(7),
         ];
     }
 }
