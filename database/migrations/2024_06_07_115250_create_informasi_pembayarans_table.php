@@ -17,7 +17,12 @@ return new class extends Migration
             $table->string('nama_akun');
             $table->string('no_rek');
             $table->string('file_bukti');
-            $table->string('status');
+            $table->enum('status', [
+                'pending',
+                'completed',
+                'failed',
+                'canceled'
+            ])->default('pending');
             $table->foreignId('transaksi_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

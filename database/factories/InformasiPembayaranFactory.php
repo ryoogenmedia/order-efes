@@ -17,7 +17,12 @@ class InformasiPembayaranFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nama_bank' => $this->faker->company,
+            'nama_akun' => $this->faker->name,
+            'no_rek' => $this->faker->bankAccountNumber,
+            'file_bukti' => $this->faker->imageUrl(),
+            'status' => $this->faker->randomElement(['pending', 'completed', 'failed', 'canceled']),
+            'transaksi_id' => \App\Models\Transaksi::inRandomOrder()->first()->id,
         ];
     }
 }

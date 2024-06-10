@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Transaksi;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TransaksiSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class TransaksiSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Transaksi::factory(4)->create();
     }
 }

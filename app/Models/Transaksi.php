@@ -15,6 +15,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Transaksi extends Model
 {
     use HasFactory;
+
+    const STATUS = [
+        'sukses',
+        'menunggu konfirmasi',
+        'menunggu pembayaran',
+        'dibatalkan',
+        'pengiriman'
+    ];
     protected $guarded = [
         'id'
     ];

@@ -35,7 +35,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
         Route::get('/tentang', 'tentang')->name('tentang');
         Route::get('/metodePengiriman', 'metodePengiriman')->name('metodePengiriman');
         Route::get('/userList', 'userList')->name('userList');
-        Route::get('/pesanan', 'pesanan')->name('pesanan');
+        Route::get('/transaksi', 'transaksi')->name('transaksi');
         Route::get('/laporan', 'laporan')->name('laporan');
         Route::get('/testimoni', 'testimoni')->name('testimoni');
         Route::get('/kontak', 'kontak')->name('kontak');

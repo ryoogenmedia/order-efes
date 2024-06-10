@@ -49,9 +49,9 @@ return [
                 'icon' => 'ri-folder-user-line'
 
             ],
-            'pesanan' => [
-                'title' => 'pesanan',
-                'url' => 'pesanan',
+            'transaksi' => [
+                'title' => 'transaksi',
+                'url' => 'transaksi',
                 'sub' => [],
                 'icon' => 'ri-file-list-3-line'
 

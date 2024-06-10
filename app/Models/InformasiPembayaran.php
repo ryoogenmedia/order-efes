@@ -14,6 +14,8 @@ class InformasiPembayaran extends Model
         'id'
     ];
 
+    const STATUS = ['pending', 'completed', 'failed', 'canceled'];
+
     public function transaksi(): BelongsTo
     {
         return $this->belongsTo(Transaksi::class);

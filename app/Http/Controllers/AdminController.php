@@ -28,6 +28,11 @@ class AdminController extends Controller
         return view('admin.user.listUser');
     }
 
+    public function transaksi()
+    {
+        return view('admin.transaksi.listTransaksi');
+    }
+
 
     public function logout()
     {
