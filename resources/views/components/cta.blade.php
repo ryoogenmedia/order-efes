@@ -11,11 +11,11 @@
             <div class="col-sm-auto">
                 <div>
                     @guest
-                    <a href="apps-nft-create.html" class="btn bg-gradient btn-danger">Register</a>
-                    <a href="apps-nft-explore.html" class="btn bg-gradient btn-info">Login</a>
+                    <a href="{{ route('register') }}" class="btn bg-gradient btn-danger">Register</a>
+                    <a href="{{ route('login') }}" class="btn bg-gradient btn-info">Login</a>
                     @endguest
                     @auth
-                    <a href="apps-nft-explore.html" class="btn bg-gradient btn-info">Shop</a>
+                    <a href="{{ route('dashboard.index') }}" class="btn bg-gradient btn-info">Shop</a>
                     @endauth
                 </div>
             </div>

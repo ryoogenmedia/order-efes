@@ -48,7 +48,7 @@
 
                     <div class="mt-4">
                         <button class="btn btn-success w-100" wire:loading.attr='disabled'>
-                            <span wire:loading.class='d-none'>Sign Up</span>
+                            <span wire:loading.class='d-none'>Sign In</span>
                             <span class="d-none" wire:loading.class.remove='d-none'>Loading ...</span>
                         </button>
                     </div>
