@@ -8,13 +8,12 @@
                     </div>
                     <div class="col-sm-auto">
                         <div class="d-flex gap-1 flex-wrap">
-                            <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn"
-                                data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Create
-                                Order</button>
-                            <button type="button" class="btn btn-info" wire:click="setStatus('tes')"><i
+                            {{-- <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
+                                id="create-btn" data-bs-target="#showModal"><i
+                                    class="ri-add-line align-bottom me-1"></i> Create
+                                Order</button> --}}
+                            <button type="button" class="btn btn-info"><i
                                     class="ri-file-download-line align-bottom me-1"></i> Import</button>
-                            <button class="btn btn-soft-danger" id="remove-actions" onClick="deleteMultiple()"><i
-                                    class="ri-delete-bin-2-line"></i></button>
                         </div>
                     </div>
                 </div>
@@ -156,6 +155,15 @@
                                     <td class="status"><span
                                             class="badge bg-{{ $color }}-subtle text-{{ $color }} text-uppercase">{{
                                             $transaksi->status }}</span>
+                                        @if ($transaksi->status == 'menunggu konfirmasi')
+
+                                        <button type="button"
+                                            class="btn btn-outline-success btn-label waves-effect right waves-light rounded-pill"
+                                            wire:click="updateStatus({{ $transaksi->id }})"
+                                            wire:loading.attr='disabled'><i
+                                                class="ri-check-double-line label-icon align-middle rounded-pill fs-16 ms-2"></i>
+                                            Konfirmasi</button>
+                                        @endif
                                     </td>
                                     <td>
                                         <ul class="list-inline hstack gap-2 mb-0">
@@ -166,17 +174,18 @@
                                                     <i class="ri-eye-fill fs-16"></i>
                                                 </a>
                                             </li>
-                                            <li class="list-inline-item edit" data-bs-toggle="tooltip"
+                                            {{-- <li class="list-inline-item edit" data-bs-toggle="tooltip"
                                                 data-bs-trigger="hover" data-bs-placement="top" title="Edit">
                                                 <a href="#showModal" data-bs-toggle="modal"
                                                     class="text-primary d-inline-block edit-item-btn">
                                                     <i class="ri-pencil-fill fs-16"></i>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             <li class="list-inline-item" data-bs-toggle="tooltip"
                                                 data-bs-trigger="hover" data-bs-placement="top" title="Remove">
                                                 <a class="text-danger d-inline-block remove-item-btn"
-                                                    data-bs-toggle="modal" href="#deleteOrder">
+                                                    data-bs-toggle="modal" href="#deleteOrder"
+                                                    wire:click="setTransaksi_id('{{ $transaksi->id }}')">
                                                     <i class="ri-delete-bin-5-fill fs-16"></i>
                                                 </a>
                                             </li>
@@ -308,7 +317,7 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade flip" id="deleteOrder" tabindex="-1" aria-hidden="true">
+                <div class="modal fade flip" id="deleteOrder" tabindex="-1" aria-hidden="true" wire:ignore.self>
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body p-5 text-center">
@@ -316,14 +325,15 @@
                                     colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px">
                                 </lord-icon>
                                 <div class="mt-4 text-center">
-                                    <h4>You are about to delete a order ?</h4>
+                                    <h4>You are about to delete a Transaksi ?</h4>
                                     <p class="text-muted fs-15 mb-4">Deleting your order will remove all of your
                                         information from our database.</p>
                                     <div class="hstack gap-2 justify-content-center remove">
                                         <button class="btn btn-link link-success fw-medium text-decoration-none"
                                             id="deleteRecord-close" data-bs-dismiss="modal"><i
                                                 class="ri-close-line me-1 align-middle"></i> Close</button>
-                                        <button class="btn btn-danger" id="delete-record">Yes, Delete It</button>
+                                        <button class="btn btn-danger" id="delete-record" wire:click='deleteTransaksi()'
+                                            data-bs-dismiss="modal">Yes, Delete It</button>
                                     </div>
                                 </div>
                             </div>

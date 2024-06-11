@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
 
 @section('content')
-@livewire('admin.transaksi.listTransaksi') ;
+@livewire('admin.transaksi.listTransaksi')
 @endsection

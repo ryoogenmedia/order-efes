@@ -15,6 +15,10 @@ class ListTransaksi extends Component
     use WithPagination;
     public  $transaksis;
     public  $transaksi_id;
+    public function setTransaksi_id($id)
+    {
+        $this->transaksi_id = $id;
+    }
     public  $users;
     public  $ongkirs;
     public  $detailTransaksis;
@@ -50,5 +54,50 @@ class ListTransaksi extends Component
         return view('livewire.admin.transaksi.list-transaksi', [
             'enumStatus' => Transaksi::STATUS,
         ]);
+    }
+
+    public function updateStatus($id)
+    {
+        $find = Transaksi::find($id);
+        if ($find != null) {
+            try {
+                if ($find->update([
+                    'status' => 'sukses'
+                ])) {
+                    flash()->success('Transaksi berhasil di konfimasi');
+                } else {
+                    flash()->error('Gagal di Konfimasi');
+                }
+            } catch (\Exception $e) {
+                flash()->error('Internal Server Error');
+            }
+        } else {
+            flash()->error('Not Found');
+        }
+    }
+
+    public function deleteTransaksi()
+    {
+        if ($this->transaksi_id == null) {
+            flash()->error('Not Found');
+            return;
+        }
+        $find = Transaksi::find($this->transaksi_id);
+        if ($find == null) {
+            flash()->error('Not Found');
+            return;
+        }
+
+        try {
+            if ($find->delete()) {
+                flash()->success('Deleted Success');
+            } else {
+                flash()->error('Deleted Failed');
+            }
+        } catch (\Exception $e) {
+            flash()->error('Internal Server Error');
+        } finally {
+            $this->pull('transaksi_id');
+        }
     }
 }

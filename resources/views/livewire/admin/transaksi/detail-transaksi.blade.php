@@ -1,9 +1,36 @@
-<div class="row">
+<div class="row d-flex align-items-stretch flex-wrap">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex align-items-center">
-                    <h5 class="card-title flex-grow-1 mb-0">Pesanan #{{ $transaksi->kode_transaksi }}</h5>
+                    <h5 class="card-title flex-grow-1 mb-0">Pesanan #{{ $transaksi->kode_transaksi }}
+                        @php
+                        $color = '' ;
+                        switch ($transaksi->status) {
+                        case 'sukses':
+                        $color = 'success' ;
+                        break;
+                        case 'menunggu konfirmasi':
+                        $color = 'warning' ;
+                        break;
+                        case 'menunggu pembayaran':
+                        $color = 'info' ;
+                        break;
+                        case 'dibatalkan':
+                        $color = 'danger' ;
+                        break;
+                        case 'pengiriman':
+                        $color = 'muted' ;
+                        break;
+
+                        default:
+                        $color = 'muted' ;
+                        break;
+                        }
+                        @endphp
+                        <span class="badge badge-label bg-{{ $color }}"><i class="mdi mdi-circle-medium"></i> {{
+                            $transaksi->status }}</span>
+                    </h5>
                     <div class="flex-shrink-0">
                         <a href="apps-invoices-details.html" class="btn btn-success btn-sm"><i
                                 class="ri-download-2-fill align-middle me-1"></i> Invoice</a>
@@ -69,15 +96,9 @@
                                 <td colspan="2" class="fw-medium p-0">
                                     <table class="table table-borderless mb-0">
                                         <tbody>
-                                            {{-- <tr>
+                                            <tr>
                                                 <td>Sub Total :</td>
                                                 <td class="text-end">
-
-                                                </td>
-                                            </tr> --}}
-                                            <tr class="border-top border-top-dashed">
-                                                <th scope="row">Total (IDR) :</th>
-                                                <th class="text-end">
                                                     @php
                                                     $total = 0;
                                                     foreach ($transaksi->detailTransaksi as $detail ){
@@ -87,8 +108,24 @@
                                                     }
                                                     @endphp
                                                     Rp {{ number_format($total , 2, ',' ,'.') }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Biaya Ongkir :</td>
+                                                <td class="text-end">
+                                                    Rp {{ number_format($transaksi->ongkir->harga , 2, ',' ,'.') }}
+                                                </td>
+                                            </tr>
+                                            <tr class="border-top border-top-dashed">
+
+                                                <th scope="row">Total Pembayaran (IDR) :</th>
+                                                <th class="text-end">
+                                                    Rp {{ number_format((($transaksi->total)) , 2 , ','
+                                                    ,
+                                                    '.')}}
                                                 </th>
                                             </tr>
+
                                         </tbody>
                                     </table>
                                 </td>
@@ -100,7 +137,7 @@
         </div>
     </div>
     <!--end col-->
-    <div class="col-md-6">
+    <div class="col-md-6 ">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex">
@@ -120,7 +157,7 @@
 
                             </div>
                             <div class="flex-grow-1 ms-3">
-                                <h6 class="fs-14 mb-1">{{ $transaksi->user->nama }}</h6>
+                                <h6 class="fs-14 mb-1 text-capitalize">{{ $transaksi->user->nama }}</h6>
                                 <p class="text-muted mb-0">Customer</p>
                             </div>
                         </div>
@@ -128,12 +165,73 @@
                     <li><i class="ri-mail-line me-2 align-middle text-muted fs-16"></i>{{ $transaksi->user->email}}</li>
                     <li><i class="ri-phone-line me-2 align-middle text-muted fs-16"></i>{{ $transaksi->user->telp }}
                     </li>
+                    <li>Tanggal Daftar : {{ $transaksi->user->created_at->format('d M, Y') }}
+                    </li>
                 </ul>
             </div>
         </div>
         <!--end card-->
     </div>
 
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0"><i class="ri-secure-payment-line align-bottom me-1 text-muted"></i>Informasi
+                    Pembayaran</h5>
+            </div>
+            <div class="card-body">
+
+                <div class="d-flex align-items-center mb-2">
+                    <div class="flex-shrink-0">
+                        <p class="text-muted mb-0">Bank:</p>
+                    </div>
+                    <div class="flex-grow-1 ms-2">
+                        <h6 class="mb-0">{{ $transaksi->informasiPembayaran->nama_bank }}</h6>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <div class="flex-shrink-0">
+                        <p class="text-muted mb-0">Nama Akun:</p>
+                    </div>
+                    <div class="flex-grow-1 ms-2">
+                        <h6 class="mb-0">{{ $transaksi->informasiPembayaran->nama_akun }}</h6>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <div class="flex-shrink-0">
+                        <p class="text-muted mb-0">No. Rek:</p>
+                    </div>
+                    <div class="flex-grow-1 ms-2">
+                        <h6 class="mb-0">{{ $transaksi->informasiPembayaran->no_rek }}</h6>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <div class="flex-shrink-0">
+                        <p class="text-muted mb-0">Status:</p>
+                    </div>
+                    <div class="flex-grow-1 ms-2">
+                        <h6 class="mb-0 text-uppercase">{{ $transaksi->informasiPembayaran->status }}</h6>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <div class="flex-shrink-0">
+                        <p class="text-muted mb-0">Bukti Pembayaran:</p>
+                    </div>
+                    <div class="flex-grow-1 ms-2">
+                        <td class="btn-group gap-2">
+                            <a href="{{ asset(Storage::url($detail->file)) }}" class="btn btn-outline-primary"
+                                target="blank">View</a>
+                            <a href="{{route('admin.download' , [ 'path' => 'resit','filename' => basename($detail->file)])}}"
+                                class="btn btn-outline-primary"><i class="ri-download-cloud-2-line"></i>
+                                Download</a>
+                        </td>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end card-->
+    </div>
+    <!--end col-->
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
@@ -142,86 +240,32 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled vstack gap-2 fs-13 mb-0">
-                    <li>{{ $transaksi->user->provinsi }}</li>
-                    <li>{{ $transaksi->user->kota }}</li>
-                    <li>{{ $transaksi->user->kecamatan }}</li>
-                    <li>{{ $transaksi->user->alamat }}</li>
+                    <li class="text-capitalize">Provinsi : {{ $transaksi->user->provinsi }}</li>
+                    <li class="text-capitalize">Kota : {{ $transaksi->user->kota }}</li>
+                    <li class="text-capitalize">Kecamatan : {{ $transaksi->user->kecamatan }}</li>
+                    <li class="text-capitalize">Alamat : {{ $transaksi->user->alamat }}</li>
                 </ul>
             </div>
         </div>
         <!--end card-->
     </div>
-
-
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-0"><i class="ri-map-pin-line align-middle me-1 text-muted"></i> Shipping
-                    Address</h5>
+                <h5 class="card-title mb-0"><i class="ri-map-pin-line align-middle me-1 text-muted"></i>Informasi
+                    Pengiriman
+                </h5>
             </div>
             <div class="card-body">
                 <ul class="list-unstyled vstack gap-2 fs-13 mb-0">
-                    <li class="fw-medium fs-14">Joseph Parker</li>
-                    <li>+(256) 245451 451</li>
-                    <li>2186 Joyce Street Rocky Mount</li>
-                    <li>California - 24567</li>
-                    <li>United States</li>
+                    <li class="text-capitalize"> <b>Metode Pengiriman</b> {{ $transaksi->ongkir->metode }}</li>
+                    <li class="text-capitalize"> <b>Provinsi</b> {{ $transaksi->ongkir->provinsi }}</li>
+                    <li class="text-capitalize"> <b>Kota</b> {{ $transaksi->ongkir->kota }}</li>
+                    <li class="text-capitalize"> <b>Kecamatan</b> {{ $transaksi->ongkir->kecamatan }}</li>
                 </ul>
             </div>
         </div>
         <!--end card-->
     </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0"><i class="ri-secure-payment-line align-bottom me-1 text-muted"></i>
-                    Payment
-                    Details</h5>
-            </div>
-            <div class="card-body">
-                <div class="d-flex align-items-center mb-2">
-                    <div class="flex-shrink-0">
-                        <p class="text-muted mb-0">Transactions:</p>
-                    </div>
-                    <div class="flex-grow-1 ms-2">
-                        <h6 class="mb-0">#VLZ124561278124</h6>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mb-2">
-                    <div class="flex-shrink-0">
-                        <p class="text-muted mb-0">Payment Method:</p>
-                    </div>
-                    <div class="flex-grow-1 ms-2">
-                        <h6 class="mb-0">Debit Card</h6>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mb-2">
-                    <div class="flex-shrink-0">
-                        <p class="text-muted mb-0">Card Holder Name:</p>
-                    </div>
-                    <div class="flex-grow-1 ms-2">
-                        <h6 class="mb-0">Joseph Parker</h6>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mb-2">
-                    <div class="flex-shrink-0">
-                        <p class="text-muted mb-0">Card Number:</p>
-                    </div>
-                    <div class="flex-grow-1 ms-2">
-                        <h6 class="mb-0">xxxx xxxx xxxx 2456</h6>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0">
-                        <p class="text-muted mb-0">Total Amount:</p>
-                    </div>
-                    <div class="flex-grow-1 ms-2">
-                        <h6 class="mb-0">$415.96</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--end card-->
-    </div>
-    <!--end col-->
+
 </div>
