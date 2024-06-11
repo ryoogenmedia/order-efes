@@ -11,10 +11,14 @@ class UserController extends Controller
     {
         return view('dashboard.index');
     }
-
     public function logout()
     {
         auth()->guard('web')->logout();
         return redirect()->route('login');
+    }
+
+    public function pesanProduk($id)
+    {
+        return "OK $id";
     }
 }

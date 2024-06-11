@@ -56,5 +56,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
 Route::middleware(['auth:web'])->prefix('dashboard')->name('dashboard.')->controller(UserController::class)->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/logout', 'logout')->name('logout');
+
+    Route::get('/pesan/{id}', 'pesanProduk')->name('pesan');
 });
 // AUTH USER END

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Produk extends Model
 {
@@ -16,9 +17,9 @@ class Produk extends Model
         'nama_produk', 'gambar', 'harga', 'keterangan', 'kategori_id'
     ];
 
-    public function kategori(): HasOne
+    public function kategori(): BelongsTo
     {
-        return $this->hasOne(Kategori::class);
+        return $this->belongsTo(Kategori::class);
     }
 
     public function keranjang(): HasMany
