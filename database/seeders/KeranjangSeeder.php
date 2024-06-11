@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Keranjang;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class KeranjangSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class KeranjangSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Keranjang::factory(10)->create();
     }
 }

@@ -15,13 +15,6 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
 });
 
-// GUEST
-
-// Route::controller(AuthController::class)->middleware('guest')->group(function () {
-//     Route::get('/login', 'login')->name('login');
-// });
-// GUEST END
-
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
 });

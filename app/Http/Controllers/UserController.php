@@ -9,11 +9,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        dd(Auth::guard('web'));
+        return view('dashboard.index');
     }
 
     public function logout()
     {
         auth()->guard('web')->logout();
+        return redirect()->route('login');
     }
 }

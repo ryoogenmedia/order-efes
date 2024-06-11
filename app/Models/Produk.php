@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Models\Kategori;
+use App\Models\Keranjang;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Produk extends Model
@@ -14,8 +16,13 @@ class Produk extends Model
         'nama_produk', 'gambar', 'harga', 'keterangan', 'kategori_id'
     ];
 
-    public function kategori(): BelongsTo
+    public function kategori(): HasOne
     {
-        return $this->belongsTo(Kategori::class);
+        return $this->hasOne(Kategori::class);
+    }
+
+    public function keranjang(): HasMany
+    {
+        return $this->hasMany(Keranjang::class);
     }
 }

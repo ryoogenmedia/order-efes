@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('keranjangs', function (Blueprint $table) {
             $table->id();
-            $table->string('jml_pesan');
+            $table->string('jml_pesan')->default(1);
             $table->string('desain');
             $table->text('catatan');
             $table->foreignId('produk_id')->constrained();

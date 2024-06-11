@@ -79,6 +79,16 @@ return [
             ],
         ],
     ],
+    'user' => [
+        'navbar' => [
+            'dashboard' => [
+                'title' => 'dashboard',
+                'url' => 'index',
+                'sub' => [],
+                'icon' => 'ri-dashboard-line'
+            ],
+        ],
+    ],
 
     'wilayah' => [
         'provinsi' => [
