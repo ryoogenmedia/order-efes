@@ -17,6 +17,7 @@ EFES
 
 -   resit -> disk('public/storage/resit')
 -   buktiPembayaran -> disk('public/storage/buktiPembayaran')
+-   buktiPengiriman -> disk('public/storage/buktiPengiriman')
 -   desain -> disk('public/storage/desain')
 -   produk -> disk('public/storage/produk')
 -   detail Transaksi -> disk('public/storage/Pesanan')

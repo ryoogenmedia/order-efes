@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_transaksi')->unique('TRX-');
+            $table->string('kode_transaksi')->unique();
             $table->string('alamat');
-            $table->string('resi');
+            $table->string('resi')->nullable();
             $table->string('bukti_kirim')->nullable();
             $table->string('total');
             $table->enum('status', ['sukses', 'menunggu konfirmasi', 'menunggu pembayaran', 'dibatalkan', 'pengiriman', 'pembuatan'])->default('menunggu konfirmasi');

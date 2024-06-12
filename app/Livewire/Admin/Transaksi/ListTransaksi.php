@@ -62,7 +62,26 @@ class ListTransaksi extends Component
         if ($find != null) {
             try {
                 if ($find->update([
-                    'status' => 'sukses'
+                    'status' => 'pembuatan'
+                ])) {
+                    flash()->success('Transaksi berhasil di konfimasi');
+                } else {
+                    flash()->error('Gagal di Konfimasi');
+                }
+            } catch (\Exception $e) {
+                flash()->error('Internal Server Error');
+            }
+        } else {
+            flash()->error('Not Found');
+        }
+    }
+    public function updateStatuspembuatan($id)
+    {
+        $find = Transaksi::find($id);
+        if ($find != null) {
+            try {
+                if ($find->update([
+                    'status' => 'pengiriman'
                 ])) {
                     flash()->success('Transaksi berhasil di konfimasi');
                 } else {

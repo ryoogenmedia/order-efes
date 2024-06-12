@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Keranjang;
+use App\Models\Testimoni;
 use App\Models\Transaksi;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -62,5 +63,10 @@ class User extends Authenticatable
     public function keranjang(): HasMany
     {
         return $this->hasMany(Keranjang::class);
+    }
+
+    public function testimoni(): HasMany
+    {
+        return $this->hasMany(Testimoni::class);
     }
 }

@@ -20,6 +20,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 
+Route::get('/download/{path}/{filename}', [AdminController::class, 'download'])->name('admin.download');
 // AUTH ADMIN
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
@@ -35,7 +36,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
 
         Route::get('/pesanan', 'transaksi')->name('transaksi');
         Route::get('/transaksi/{id}', 'transaksiDetail')->name('transaksi.detail');
-        Route::get('/download/{path}/{filename}', 'download')->name('download');
+        // Route::get('/download/{path}/{filename}', 'download')->name('download');
 
         Route::get('/laporan', 'laporan')->name('laporan');
 
@@ -61,6 +62,7 @@ Route::middleware(['auth:web'])->prefix('dashboard')->name('dashboard.')->contro
     Route::get('/checkout/{id}', 'checkoutSingle')->name('checkoutSingle');
 
     Route::get('/pesanan', 'pesanan')->name('pesanan');
+    Route::get('/pesanan/{id}', 'detailPesanan')->name('detailPesanan');
     Route::get('/setting', 'setting')->name('setting');
 });
 // AUTH USER END

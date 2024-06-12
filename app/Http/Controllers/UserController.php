@@ -26,4 +26,16 @@ class UserController extends Controller
     {
         return view('dashboard.pesan.single');
     }
+    public function setting()
+    {
+        return view('dashboard.pesan.single');
+    }
+    public function pesanan()
+    {
+        return view('dashboard.listPesanan');
+    }
+    public function detailPesanan($id)
+    {
+        return view('dashboard.detailPesanan', ['id' => $id]);
+    }
 }

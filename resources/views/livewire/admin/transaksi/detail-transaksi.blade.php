@@ -20,7 +20,10 @@
                         $color = 'danger' ;
                         break;
                         case 'pengiriman':
-                        $color = 'muted' ;
+                        $color = 'info' ;
+                        break;
+                        case 'pembuatan':
+                        $color = 'info' ;
                         break;
 
                         default:
@@ -126,6 +129,7 @@
                                                 </th>
                                             </tr>
 
+
                                         </tbody>
                                     </table>
                                 </td>
@@ -136,6 +140,48 @@
             </div>
         </div>
     </div>
+    @if ($transaksi->status == 'pembuatan')
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0"><i class="ri-caravan-line align-middle me-1 text-muted"></i>Bukti Pengiriman
+                </h5>
+
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled vstack gap-2 fs-13 mb-3">
+                    <label for="" class="form-label">No Resi Pengiriman
+                        @error('resi')
+                        <code>{{ $message }}</code>
+                        @enderror
+                    </label>
+                    <li class="btn-group gap-2">
+                        <input type="text" id="noResi" class="form-control" placeholder="No Resi Pengiriman"
+                            wire:model.live='resi'>
+                    </li>
+
+                    <label for="" class="form-label">File
+                        @error('file')
+                        <code>{{ $message }}</code>
+                        @enderror
+                    </label>
+                    <li class="btn-group gap-2">
+                        <input type="file" id="fileJadi" class="form-control" placeholder="File Pesanan"
+                            wire:model.live='file'>
+                    </li>
+
+                    <li>
+                        <div class="btn-group">
+                            <button class="btn-primary btn" wire:loading.attr='disabled'
+                                wire:click='konfirmasi()'>Konfirmasi</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--end card-->
+    </div>
+    @endif
     <!--end col-->
     <div class="col-md-6 ">
         <div class="card">
@@ -240,10 +286,12 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled vstack gap-2 fs-13 mb-0">
+
                     <li class="text-capitalize">Provinsi : {{ $transaksi->user->provinsi }}</li>
                     <li class="text-capitalize">Kota : {{ $transaksi->user->kota }}</li>
                     <li class="text-capitalize">Kecamatan : {{ $transaksi->user->kecamatan }}</li>
                     <li class="text-capitalize">Alamat : {{ $transaksi->alamat }}</li>
+
                 </ul>
             </div>
         </div>
@@ -255,6 +303,7 @@
                 <h5 class="card-title mb-0"><i class="ri-map-pin-line align-middle me-1 text-muted"></i>Informasi
                     Pengiriman
                 </h5>
+
             </div>
             <div class="card-body">
                 <ul class="list-unstyled vstack gap-2 fs-13 mb-0">
@@ -263,6 +312,9 @@
                     <li class="text-capitalize"> <b>Kota</b> {{ $transaksi->ongkir->kota }}</li>
                     <li class="text-capitalize"> <b>Kecamatan</b> {{ $transaksi->ongkir->kecamatan }}</li>
                 </ul>
+
+
+
             </div>
         </div>
         <!--end card-->

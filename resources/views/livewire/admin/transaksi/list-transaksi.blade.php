@@ -146,6 +146,9 @@
                                     case 'pengiriman':
                                     $color = 'muted' ;
                                     break;
+                                    case 'pembuatan':
+                                    $color = 'info' ;
+                                    break;
 
                                     default:
                                     $color = 'muted' ;
@@ -164,6 +167,14 @@
                                                 class="ri-check-double-line label-icon align-middle rounded-pill fs-16 ms-2"></i>
                                             Konfirmasi</button>
                                         @endif
+                                        @if ($transaksi->status == 'pembuatan')
+
+                                        <a href="{{ route('admin.transaksi.detail' ,['id' =>  $transaksi->id]) }}"
+                                            class="btn btn-outline-info btn-label waves-effect right waves-light rounded-pill"
+                                            wire:loading.attr='disabled'><i class=" ri-caravan-line label-icon align-middle rounded-pill fs-16
+                                            ms-2"></i>
+                                            Konfirmasi Pengiriman</a>
+                                        @endif
                                     </td>
                                     <td>
                                         <ul class="list-inline hstack gap-2 mb-0">
@@ -174,13 +185,6 @@
                                                     <i class="ri-eye-fill fs-16"></i>
                                                 </a>
                                             </li>
-                                            {{-- <li class="list-inline-item edit" data-bs-toggle="tooltip"
-                                                data-bs-trigger="hover" data-bs-placement="top" title="Edit">
-                                                <a href="#showModal" data-bs-toggle="modal"
-                                                    class="text-primary d-inline-block edit-item-btn">
-                                                    <i class="ri-pencil-fill fs-16"></i>
-                                                </a>
-                                            </li> --}}
                                             <li class="list-inline-item" data-bs-toggle="tooltip"
                                                 data-bs-trigger="hover" data-bs-placement="top" title="Remove">
                                                 <a class="text-danger d-inline-block remove-item-btn"
