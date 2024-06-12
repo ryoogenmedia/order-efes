@@ -19,6 +19,6 @@ class UserController extends Controller
 
     public function pesanProduk($id)
     {
-        return "OK $id";
+        return view('dashboard.pesan.single', ['id' => $id]);
     }
 }

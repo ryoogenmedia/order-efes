@@ -82,7 +82,7 @@ return [
     'user' => [
         'navbar' => [
             'dashboard' => [
-                'title' => 'dashboard',
+                'title' => 'Produk',
                 'url' => 'index',
                 'sub' => [],
                 'icon' => 'ri-dashboard-line'

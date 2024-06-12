@@ -12,7 +12,7 @@ class ListProduk extends Component
     public $kategori_id = '';
     public $produk_id;
 
-    public $perPage = 5;
+    public $perPage = 10;
     public $page = 1;
 
     public $search = '';
@@ -20,7 +20,7 @@ class ListProduk extends Component
     {
         if ($this->kategori_id == '') {
             $produks = Produk::where('nama_produk', 'like', '%' . $this->search . '%')
-                ->paginate($this->perPage);
+                ->paginate($this->perPage, page: $this->page);
         } else {
             $produks = Produk::where('kategori_id', $this->kategori_id)
                 ->when($this->search, function ($query, $search) {
@@ -51,5 +51,24 @@ class ListProduk extends Component
     public function kategoriClear()
     {
         $this->pull('kategori_id');
+    }
+
+    public function next($total)
+    {
+        if ($this->page < $total) {
+            $this->page += 1;
+        }
+    }
+
+    public function previous()
+    {
+        if ($this->page > 1) {
+            $this->page -= 1;
+        }
+    }
+
+    public function tambahKeranjang($produk_id)
+    {
+        $this->dispatch('keranjang-add', $produk_id);
     }
 }

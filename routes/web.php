@@ -57,6 +57,7 @@ Route::middleware(['auth:web'])->prefix('dashboard')->name('dashboard.')->contro
     Route::get('/', 'index')->name('index');
     Route::get('/logout', 'logout')->name('logout');
 
+    Route::get('/keranjang', 'keranjang')->name('keranjang');
     Route::get('/pesan/{id}', 'pesanProduk')->name('pesan');
 });
 // AUTH USER END

@@ -30,5 +30,5 @@
     </li>
     @endif
     @endforeach
-
+    @livewire('dashboard.subSidebar')
 </ul>

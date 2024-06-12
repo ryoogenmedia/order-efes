@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('detail_transaksis', function (Blueprint $table) {
             $table->id();
             $table->string('jml_pesanan');
-            $table->string('desain');
+            $table->string('desain')->nullable();
             $table->string('file');
-            $table->string('catatan');
+            $table->string('catatan')->nullable();
             $table->foreignId('produk_id')->constrained();
             $table->foreignId('transaksi_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

@@ -23,9 +23,9 @@
                 <table class="table align-middle table-nowrap" id="customerTable">
                     <thead class="table-light">
                         <tr>
+                            <th class="sort" data-sort="gambar">Gambar</th>
                             <th class="sort" data-sort="customer_name">Nama Produk</th>
                             <th class="sort" data-sort="customer_name">Harga</th>
-                            <th class="sort" data-sort="gambar">Gambar</th>
                             <th class="sort" data-sort="action"></th>
                         </tr>
                     </thead>
@@ -33,12 +33,6 @@
 
                         @foreach ($produks as $produk)
                         <tr>
-
-                            <td class="customer_name">{{ $produk->nama_produk }}<span
-                                    class="badge badge-label bg-info"><i class="mdi mdi-circle-medium"></i>
-                                    {{ $produk->kategori->nama_kategori }}</span></td>
-                            <td class="customer_name">Rp {{ number_format($produk->harga , 2 , ',' , '.') }}
-                            </td>
                             <td class="gambar">
                                 <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
                                     <div class="avatar-xl text-center">
@@ -47,6 +41,16 @@
                                     </div>
                                 </div>
                             </td>
+                            <td class="customer_name ">
+                                <div class="h5">
+                                    {{ $produk->nama_produk }}
+                                </div>
+                                <span class="badge badge-label bg-info"><i class="mdi mdi-circle-medium"></i>
+                                    {{ $produk->kategori->nama_kategori }}</span>
+                            </td>
+                            <td class="customer_name">Rp {{ number_format($produk->harga , 2 , ',' , '.') }}
+                            </td>
+
                             <td>
                                 <div class="d-flex gap-2">
                                     <div class="edit">
@@ -56,10 +60,18 @@
                                             wire:loading.attr='disabled'>Detail</button>
                                     </div>
                                     <div class=" remove">
+                                        <button class="btn btn-sm btn-warning remove-item-btn"
+                                            wire:click="tambahKeranjang('{{ $produk->id }}')"
+                                            wire:loading.attr='disabled'>
+                                            <i class="ri-shopping-cart-2-line"></i>
+                                            Tambah Ke Keranjang
+                                        </button>
+                                    </div>
+                                    <div class=" remove">
                                         <a href="{{ route('dashboard.pesan' , ['id' => $produk->id]) }}"
                                             class="btn btn-sm btn-primary remove-item-btn"> <i
-                                                class="ri-shopping-cart-2-line"></i>
-                                            Pesan</a>
+                                                class="ri-send-plane-2-line"></i>
+                                            Pesan Sekarang</a>
                                     </div>
                                 </div>
                             </td>
@@ -86,6 +98,22 @@
                 </div>
             </div>
             @endif
+            <div class="d-flex justify-content-start">
+                <span class="ml-4 ">Show {{ $produks->perPage() }} of {{ $produks->total() }}</span>
+            </div>
+            <div class="d-flex justify-content-end" wire:ignore.self>
+                <div class="btn-group gap-2">
+                    <button class="btn btn-outline-primary btn-sm" wire:click='previous()'>
+                        Previous
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm">
+                        {{ $produks->currentPage() }}
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" wire:click="next('{{ $produks->lastPage() }}')">
+                        Next
+                    </button>
+                </div>
+            </div>
         </div>
         <!-- end card body -->
     </div>

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('keranjangs', function (Blueprint $table) {
             $table->id();
             $table->string('jml_pesan')->default(1);
-            $table->string('desain');
-            $table->text('catatan');
+            $table->string('desain')->nullable();
+            $table->text('catatan')->nullable();
             $table->foreignId('produk_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
