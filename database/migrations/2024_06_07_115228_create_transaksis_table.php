@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('resi');
             $table->string('bukti_kirim')->nullable();
             $table->string('total');
-            $table->enum('status', ['sukses', 'menunggu konfirmasi', 'menunggu pembayaran', 'dibatalkan', 'pengiriman'])->default('menunggu konfirmasi');
+            $table->enum('status', ['sukses', 'menunggu konfirmasi', 'menunggu pembayaran', 'dibatalkan', 'pengiriman', 'pembuatan'])->default('menunggu konfirmasi');
             $table->foreignId('ongkir_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();

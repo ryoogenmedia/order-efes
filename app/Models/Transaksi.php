@@ -20,6 +20,7 @@ class Transaksi extends Model
         'sukses',
         'menunggu konfirmasi',
         'menunggu pembayaran',
+        'pembuatan',
         'dibatalkan',
         'pengiriman'
     ];

@@ -33,7 +33,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
 
         Route::get('/userList', 'userList')->name('userList');
 
-        Route::get('/transaksi', 'transaksi')->name('transaksi');
+        Route::get('/pesanan', 'transaksi')->name('transaksi');
         Route::get('/transaksi/{id}', 'transaksiDetail')->name('transaksi.detail');
         Route::get('/download/{path}/{filename}', 'download')->name('download');
 
@@ -59,5 +59,8 @@ Route::middleware(['auth:web'])->prefix('dashboard')->name('dashboard.')->contro
 
     Route::get('/keranjang', 'keranjang')->name('keranjang');
     Route::get('/checkout/{id}', 'checkoutSingle')->name('checkoutSingle');
+
+    Route::get('/pesanan', 'pesanan')->name('pesanan');
+    Route::get('/setting', 'setting')->name('setting');
 });
 // AUTH USER END

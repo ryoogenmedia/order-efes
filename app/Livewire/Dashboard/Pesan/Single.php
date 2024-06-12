@@ -4,51 +4,41 @@ namespace App\Livewire\Dashboard\Pesan;
 
 use App\Models\Produk;
 use Livewire\Component;
-use Livewire\Attributes\Validate;
+use App\Models\Keranjang;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Validate;
 
 class Single extends Component
 {
     use WithFileUploads;
-    public $produk;
-    public $produk_id;
 
-    #[Validate('required|min:1|numeric')]
-    public $jml_pesan = 1;
-
-    #[Validate('image|max:10024')]
-    public $file;
-    public $catatan;
-    public function mount($id)
+    public function mount()
     {
-        $this->produk = Produk::find($id);
-        $this->produk_id = $id;
+        $keranjang = Keranjang::all();
+        if ($keranjang->isEmpty()) {
+            return redirect()->route('dashboard.index');
+        }
     }
     public function render()
     {
-        return view('livewire.dashboard.pesan.single');
+        $keranjang = Keranjang::all();
+        return view(
+            'livewire.dashboard.pesan.single',
+            [
+                'keranjangs' => $keranjang,
+            ]
+        );
     }
 
-    public function tambahJmlPesan()
+    public function delete($id)
     {
-        $this->jml_pesan += 1;
-    }
-    public function kurangiJmlPesan()
-    {
-        if ($this->jml_pesan > 1) {
-            $this->jml_pesan -= 1;
+        if (Keranjang::find($id)->delete()) {
+
+            $keranjang = Keranjang::all();
+            if ($keranjang->isEmpty()) {
+                return redirect()->route('dashboard.index');
+            }
+            $this->dispatch('keranjang-deleted');
         }
     }
-
-    // public function checkout()
-    // {
-    //     $this->validate();
-    //     $imageName = time() . '_' . uniqid() . '.' . $this->file->getClientOriginalExtension();
-    //     $imagePath = $this->gambar->storeAs('pesanan', $imageName, 'public');
-    //     $data = [
-    //         'jml_pesan' => $this->jml_pesan,
-    //         'file' => $imagePath,
-    //         'catatan' => $this->catatan
-    //     ];
-    // }
 }

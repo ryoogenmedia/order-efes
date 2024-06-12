@@ -8,6 +8,7 @@ EFES
     'sukses',
     'menunggu konfirmasi',
     'menunggu pembayaran',
+    'pembuatan',
     'dibatalkan',
     'pengiriman'
     ];

@@ -6,6 +6,7 @@ use App\Models\Kontak;
 use App\Models\Ongkir;
 use App\Models\Produk;
 use Livewire\Component;
+use App\Models\Keranjang;
 use App\Models\Transaksi;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -92,12 +93,14 @@ class Single extends Component
         }
     }
 
+    public $kode_transaksi;
     public function createTransaction()
     {
         $this->validate();
         try {
+            $this->kode_transaksi = 'TRX-' . Str::uuid();
             $transaksi = Transaksi::create([
-                'kode_transaksi' => 'TRX-' . Str::uuid(),
+                'kode_transaksi' => $this->kode_transaksi,
                 'alamat' => $this->alamat,
                 'total' => $this->total,
                 'resi' => 'tidak ada',
@@ -127,7 +130,11 @@ class Single extends Component
                     'produk_id' => $this->produk_id,
                     'transaksi_id' => $id,
                 ]);
+
+                Keranjang::where(['user_id' => Auth::user()->id, 'produk_id' => $this->produk_id])->delete();
+                $this->dispatch('keranjang-deleted');
             }
+            $this->isFinish = true;
             flash()->success('Ordering Success');
         } catch (\Exception $e) {
             flash()->error("Terjadi kesalahan: " . $e->getMessage());

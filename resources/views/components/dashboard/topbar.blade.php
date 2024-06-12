@@ -386,8 +386,7 @@
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header text-capitalize">Welcome {{ Auth::user()->nama }}!</h6>
-                        <a class="dropdown-item" href="pages-profile-settings.html"><span
-                                class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
+                        <a class="dropdown-item" href="pages-profile-settings.html"><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Settings</span></a>
                         <a class="dropdown-item" href="{{ route('dashboard.logout') }}"><i

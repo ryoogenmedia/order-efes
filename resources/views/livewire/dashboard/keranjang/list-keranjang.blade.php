@@ -66,6 +66,7 @@
                 @endif
             </div>
         </div>
+        @if ($keranjangs->count() != 0)
         <div class="p-3 border-bottom-0 border-start-0 border-end-0 border-dashed border">
             <div class="d-flex justify-content-between align-items-center pb-3">
                 <h5 class="m-0 text-muted">Total:</h5>
@@ -80,9 +81,11 @@
                     <h5 class="m-0">Rp {{ number_format($total , 2 , ',' , '.') }}</h5>
                 </div>
             </div>
+
             <button class="btn btn-success text-center w-100" wire:loading.class='d-none'>
                 Checkout
             </button>
         </div>
+        @endif
     </div>
 </div>

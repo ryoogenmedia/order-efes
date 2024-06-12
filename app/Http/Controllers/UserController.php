@@ -21,4 +21,9 @@ class UserController extends Controller
     {
         return view('dashboard.checkout.single', ['id' => $id]);
     }
+
+    public function keranjang()
+    {
+        return view('dashboard.pesan.single');
+    }
 }

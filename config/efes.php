@@ -49,20 +49,20 @@ return [
                 'icon' => 'ri-folder-user-line'
 
             ],
-            'transaksi' => [
-                'title' => 'transaksi',
+            'pesanan' => [
+                'title' => 'pesanan',
                 'url' => 'transaksi',
                 'sub' => [],
                 'icon' => 'ri-file-list-3-line'
 
             ],
-            'laporan' => [
-                'title' => 'laporan',
-                'url' => 'laporan',
-                'sub' => [],
-                'icon' => 'ri-megaphone-line'
+            // 'laporan' => [
+            //     'title' => 'laporan',
+            //     'url' => 'laporan',
+            //     'sub' => [],
+            //     'icon' => 'ri-megaphone-line'
 
-            ],
+            // ],
             'testimoni' => [
                 'title' => 'testimoni',
                 'url' => 'testimoni',
@@ -86,6 +86,18 @@ return [
                 'url' => 'index',
                 'sub' => [],
                 'icon' => 'ri-dashboard-line'
+            ],
+            'settings' => [
+                'title' => 'Settings',
+                'url' => 'setting',
+                'sub' => [],
+                'icon' => 'mdi mdi-cog-outline'
+            ],
+            'pesanan' => [
+                'title' => 'pesanan',
+                'url' => 'pesanan',
+                'sub' => [],
+                'icon' => 'ri-file-list-3-line'
             ],
         ],
     ],
