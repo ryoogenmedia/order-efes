@@ -78,9 +78,9 @@
                                 <td>Rp {{ number_format($detail->produk->harga ,2 , ',' ,'.') }}</td>
                                 <td class="text-center">{{ $detail->jml_pesanan }}</td>
                                 <td class="btn-group gap-2">
-                                    <a href="{{ asset(Storage::url($detail->file)) }}" class="btn btn-outline-primary"
+                                    <a href="{{ asset(Storage::url($detail->desain)) }}" class="btn btn-outline-primary"
                                         target="blank">View</a>
-                                    <a href="{{route('admin.download' , [ 'path' => 'pesanan','filename' => basename($detail->file)])}}"
+                                    <a href="{{route('admin.download' , [ 'path' => 'desain','filename' => basename($detail->desain)])}}"
                                         class="btn btn-outline-primary"><i class="ri-download-cloud-2-line"></i>
                                         Download</a>
                                 </td>
@@ -219,9 +219,9 @@
                     </div>
                     <div class="flex-grow-1 ms-2">
                         <td class="btn-group gap-2">
-                            <a href="{{ asset(Storage::url($detail->file)) }}" class="btn btn-outline-primary"
-                                target="blank">View</a>
-                            <a href="{{route('admin.download' , [ 'path' => 'resit','filename' => basename($detail->file)])}}"
+                            <a href="{{ asset(Storage::url($transaksi->informasiPembayaran->file_bukti)) }}"
+                                class="btn btn-outline-primary" target="blank">View</a>
+                            <a href="{{route('admin.download' , [ 'path' => 'buktiPembayaran','filename' => basename($transaksi->informasiPembayaran->file_bukti)])}}"
                                 class="btn btn-outline-primary"><i class="ri-download-cloud-2-line"></i>
                                 Download</a>
                         </td>
@@ -243,7 +243,7 @@
                     <li class="text-capitalize">Provinsi : {{ $transaksi->user->provinsi }}</li>
                     <li class="text-capitalize">Kota : {{ $transaksi->user->kota }}</li>
                     <li class="text-capitalize">Kecamatan : {{ $transaksi->user->kecamatan }}</li>
-                    <li class="text-capitalize">Alamat : {{ $transaksi->user->alamat }}</li>
+                    <li class="text-capitalize">Alamat : {{ $transaksi->alamat }}</li>
                 </ul>
             </div>
         </div>

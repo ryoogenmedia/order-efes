@@ -19,7 +19,7 @@ class DetailTransaksi extends Component
         return view(
             'livewire.admin.transaksi.detail-transaksi',
             [
-                'transaksi' => Transaksi::where('id', $this->id)->first(),
+                'transaksi' => Transaksi::find($this->id),
                 'InformasiPembayaran' => InformasiPembayaran::where('transaksi_id', $this->id)->first(),
             ]
         );
