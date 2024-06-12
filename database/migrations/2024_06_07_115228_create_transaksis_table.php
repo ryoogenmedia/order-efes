@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_transaksi');
+            $table->string('kode_transaksi')->unique('TRX-');
             $table->string('alamat');
             $table->string('resi');
-            $table->string('bukti_kirim');
+            $table->string('bukti_kirim')->nullable();
             $table->string('total');
             $table->enum('status', ['sukses', 'menunggu konfirmasi', 'menunggu pembayaran', 'dibatalkan', 'pengiriman'])->default('menunggu konfirmasi');
             $table->foreignId('ongkir_id')->constrained();

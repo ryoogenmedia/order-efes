@@ -68,7 +68,7 @@
                                         </button>
                                     </div>
                                     <div class=" remove">
-                                        <a href="{{ route('dashboard.pesan' , ['id' => $produk->id]) }}"
+                                        <a href="{{ route('dashboard.checkoutSingle' , ['id' => $produk->id]) }}"
                                             class="btn btn-sm btn-primary remove-item-btn"> <i
                                                 class="ri-send-plane-2-line"></i>
                                             Pesan Sekarang</a>
@@ -141,7 +141,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <a href="{{ route('dashboard.pesan' , ['id' => $produkSelected->id]) }}"
+                    <a href="{{ route('dashboard.checkoutSingle' , ['id' => $produkSelected->id]) }}"
                         class="btn btn-primary ">Pesan Sekarang</a>
                 </div>
 

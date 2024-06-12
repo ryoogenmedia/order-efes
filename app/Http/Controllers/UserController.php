@@ -17,8 +17,8 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
-    public function pesanProduk($id)
+    public function checkoutSingle($id)
     {
-        return view('dashboard.pesan.single', ['id' => $id]);
+        return view('dashboard.checkout.single', ['id' => $id]);
     }
 }

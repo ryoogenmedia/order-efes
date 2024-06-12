@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('jml_pesanan');
             $table->string('desain')->nullable();
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->string('catatan')->nullable();
             $table->foreignId('produk_id')->constrained();
             $table->foreignId('transaksi_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();

@@ -64,5 +64,8 @@
 
 <script src="{{ asset('assets/js/pages/form-file-upload.init.js') }}"></script>
 
+<!-- init js -->
+<script src="{{ asset('assets/js/pages/ecommerce-product-checkout.init.js') }}"></script>
+
 <!-- App js -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
