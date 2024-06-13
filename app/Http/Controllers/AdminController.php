@@ -39,6 +39,10 @@ class AdminController extends Controller
         return view('admin.transaksi.detailTransaksi', ['id' => $id]);
     }
 
+    public function testimoni()
+    {
+        return view('admin.testimoni.listTestimoni');
+    }
 
 
 

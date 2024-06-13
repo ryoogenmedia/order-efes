@@ -35,8 +35,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
         Route::get('/userList', 'userList')->name('userList');
 
         Route::get('/pesanan', 'transaksi')->name('transaksi');
+
         Route::get('/transaksi/{id}', 'transaksiDetail')->name('transaksi.detail');
-        // Route::get('/download/{path}/{filename}', 'download')->name('download');
 
         Route::get('/laporan', 'laporan')->name('laporan');
 
@@ -47,6 +47,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
         Route::get('/produk-list', 'produk_list')->name('produk');
         Route::get('/produk-create', 'produk_create')->name('produk.create');
     });
+
     Route::controller(KategoriController::class)->group(function () {
         Route::get('/kategori', 'index')->name('kategori');
     });
