@@ -3,8 +3,9 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Testimoni as testimoniModel;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class testimoni extends Component
 {
@@ -20,21 +21,7 @@ class testimoni extends Component
      */
     public function render(): View|Closure|string
     {
-        $testimoni = [
-            [
-                'nama' => 'Alessa Diandra',
-                'testimoni' => 'Aku suka hasil cetaknya, bersih, mengkilap dan awet. Terima kasih jasacetak',
-                'avatar' => 'avatar-2.jpg',
-                'alamat' => 'Indonesia , jakarta',
-            ],
-            [
-                'nama' => 'Fery Dermawawn',
-                'testimoni' => 'Pelayan yang ramah , hasil yang memuaskan. aku suka dengan jasa cetak ini',
-                'avatar' => 'avatar-1.jpg',
-                'alamat' => 'Indonesia , Makassar',
 
-            ],
-        ];
-        return view('components.testimoni', ['testimoni' => $testimoni]);
+        return view('components.testimoni', ['testimoni' => testimoniModel::where('is_show', true)->get()]);
     }
 }

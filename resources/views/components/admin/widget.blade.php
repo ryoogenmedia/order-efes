@@ -6,13 +6,13 @@
                 <div class="d-flex align-items-center">
                     <div class="flex-grow-1 overflow-hidden">
                         <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                            Pesanan</p>
+                            Total Pesanan</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
                         <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="2">0</span>
+                                data-target="{{ $transaksi->count() }}">0</span>
                         </h4>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
@@ -36,8 +36,8 @@
                 </div>
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
-                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="2">0</span>
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{
+                                $dikerjakan }}"></span>
                         </h4>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
@@ -61,8 +61,8 @@
                 </div>
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
-                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="2">0</span>
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{
+                                $dikirim }}">0</span>
                         </h4>
                     </div>
                     <div class="avatar-sm flex-shrink-0">
@@ -86,8 +86,8 @@
                 </div>
                 <div class="d-flex align-items-end justify-content-between mt-4">
                     <div>
-                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                data-target="2">0</span>
+                        <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{
+                                $selesai }}">0</span>
                         </h4>
                     </div>
                     <div class="avatar-sm flex-shrink-0">

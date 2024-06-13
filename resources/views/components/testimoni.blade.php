@@ -16,18 +16,24 @@
             <div class="col-lg-12">
                 <div class="swiper candidate-swiper">
                     <div class="swiper-wrapper">
-                        @foreach ($testimoni as $key => $testi )
+                        @foreach ($testimoni as $testi )
                         <div class="swiper-slide">
                             <div class="card text-center">
                                 <div class="card-body p-4">
-                                    <img src="{{ asset('assets/images/users/' . $testi['avatar']) }}" alt=""
+                                    @if ($testi->user->foto != null)
+                                    <img src="{{ asset(Storage::url($testi->user->foto)) }}" alt=""
                                         class="rounded-circle avatar-md mx-auto d-block">
+                                    @else
+                                    <img src="{{ asset('assets/images/users/user-dummy-img.jpg') }}" alt=""
+                                        class="rounded-circle avatar-md mx-auto d-block">
+
+                                    @endif
                                     <h5 class="fs-17 mt-3 mb-2"></h5>
-                                    <p class="text-muted fs-13 mb-3">{{ $testi['nama'] }}</p>
-                                    <p>{{ $testi['testimoni'] }}</p>
+                                    <p class="text-muted fs-13 mb-3">{{ $testi->user->nama }}</p>
+                                    <p>{{ $testi->testimoni }}</p>
                                     <p class="text-muted mb-4 fs-14">
                                         <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> {{
-                                        $testi['alamat'] }}
+                                        $testi->user->alamat }}
                                     </p>
 
                                 </div>
