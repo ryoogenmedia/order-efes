@@ -36,49 +36,64 @@
             <!-- end col -->
             <div class="col-lg-8">
                 <div>
-                    <form>
+                    <div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="mb-4">
-                                    <label for="name" class="form-label fs-13">Name</label>
-                                    <input name="name" id="name" type="text" class="form-control bg-light border-light"
-                                        placeholder="Your name*">
+                                    <label for="name" class="form-label fs-13">Nama
+                                        @error('nama')
+                                        <code>{{ $message }}</code>
+                                        @enderror
+                                    </label>
+                                    <input type="text" class="form-control bg-light border-light"
+                                        placeholder="Your name*" wire:model='nama'>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
-                                    <label for="email" class="form-label fs-13">Email</label>
-                                    <input name="email" id="email" type="email"
-                                        class="form-control bg-light border-light" placeholder="Your email*">
+                                    <label for="email" class="form-label fs-13">Email
+                                        @error('email')
+                                        <code>{{ $message }}</code>
+                                        @enderror
+                                    </label>
+                                    <input type="email" class="form-control bg-light border-light"
+                                        placeholder="Your email*" wire:model='email'>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="subject" class="form-label fs-13">Subject</label>
-                                    <input type="text" class="form-control bg-light border-light" id="subject"
-                                        name="subject" placeholder="Your Subject..">
+                                    <label for="subject" class="form-label fs-13">Subject
+                                        @error('subjek')
+                                        <code>{{ $message }}</code>
+                                        @enderror
+                                    </label>
+                                    <input type="text" class="form-control bg-light border-light"
+                                        placeholder="Your Subject.." wire:model='subjek'>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="comments" class="form-label fs-13">Message</label>
-                                    <textarea name="comments" id="comments" rows="3"
-                                        class="form-control bg-light border-light"
-                                        placeholder="Your message..."></textarea>
+                                    <label for="comments" class="form-label fs-13">Message
+                                        @error('pesan')
+                                        <code>{{ $message }}</code>
+                                        @enderror
+                                    </label>
+                                    <textarea rows="5" class="form-control bg-light border-light"
+                                        placeholder="Your message..." wire:model='pesan'></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 text-end">
-                                <input type="submit" id="submit" name="send" class="submitBnt btn btn-primary"
-                                    value="Send Message">
+                                <button type="submit" class="submitBnt btn btn-primary" wire:click='sendMessage()'
+                                    wire:loading.attr='disabled'>Send Message </button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

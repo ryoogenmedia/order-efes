@@ -9,6 +9,6 @@ class KontakKami extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'email', 'subjek', 'pesan'
+        'nama', 'email', 'subjek', 'pesan'
     ];
 }

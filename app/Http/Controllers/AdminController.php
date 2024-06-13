@@ -44,6 +44,11 @@ class AdminController extends Controller
         return view('admin.testimoni.listTestimoni');
     }
 
+    public function message()
+    {
+        return view('admin.message');
+    }
+
 
 
 

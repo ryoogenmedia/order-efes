@@ -70,6 +70,13 @@ return [
                 'icon' => 'ri-chat-3-line'
 
             ],
+            'message' => [
+                'title' => 'message',
+                'url' => 'message',
+                'sub' => [],
+                'icon' => 'ri-chat-3-line'
+
+            ],
             'kontak' => [
                 'title' => 'kontak',
                 'url' => 'kontak',

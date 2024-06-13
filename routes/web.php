@@ -44,6 +44,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(functi
 
         Route::get('/kontak', 'kontak')->name('kontak');
 
+        Route::get('/message', 'message')->name('message');
+
         Route::get('/produk-list', 'produk_list')->name('produk');
         Route::get('/produk-create', 'produk_create')->name('produk.create');
     });
