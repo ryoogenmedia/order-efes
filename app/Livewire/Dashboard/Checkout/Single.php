@@ -64,6 +64,7 @@ class Single extends Component
 
     public function mount($id, Ongkir $ongkir, Kontak $kontak)
     {
+        $this->alamat = Auth::user()->alamat;
         $this->produk_id = $id;
         $this->produk = Produk::find($this->produk_id);
         $this->ongkirs = $ongkir;

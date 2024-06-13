@@ -55,4 +55,18 @@ class DetailTransaksi extends Component
             flash()->error('Internal Server Error');
         }
     }
+
+    public function updateStatus()
+    {
+        try {
+            if (Transaksi::find($this->id)->update(['status' => 'pembuatan'])) {
+
+                flash()->success('berhasil di konfirmasi');
+            } else {
+                flash()->error('gagal di konfimaasi ');
+            }
+        } catch (\Exception $e) {
+            flash()->error('gagal di konfimaasi , internal server error');
+        }
+    }
 }

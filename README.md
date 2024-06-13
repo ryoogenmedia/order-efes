@@ -20,4 +20,5 @@ EFES
 -   buktiPengiriman -> disk('public/storage/buktiPengiriman')
 -   desain -> disk('public/storage/desain')
 -   produk -> disk('public/storage/produk')
+-   user -> disk('public/storage/user')
 -   detail Transaksi -> disk('public/storage/Pesanan')

@@ -40,7 +40,7 @@
                         <div class="card-body">
                             <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i>
                                 15.93k </p>
-                            <h5 class="mb-1"><a href="apps-nft-item-details.html">{{ $produk->nama_produk}}</a></h5>
+                            <h5 class="mb-1"><a href="{{ route('dashboard.index') }}">{{ $produk->nama_produk}}</a></h5>
                             <p class="text-muted mb-0">{{ $produk->kategori->nama_kategori }}</p>
                         </div>
                         <div class="card-footer border-top border-top-dashed">

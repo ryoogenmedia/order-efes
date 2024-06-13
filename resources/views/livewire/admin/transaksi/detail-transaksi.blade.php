@@ -34,11 +34,15 @@
                         <span class="badge badge-label bg-{{ $color }}"><i class="mdi mdi-circle-medium"></i> {{
                             $transaksi->status }}</span>
                     </h5>
-                    <div class="flex-shrink-0">
-                        <a href="apps-invoices-details.html" class="btn btn-success btn-sm"><i
-                                class="ri-download-2-fill align-middle me-1"></i> Invoice</a>
+                    @if ($transaksi->status == 'menunggu konfirmasi')
+
+                    <div class="flex-shrink-0" wire:ignore.self>
+                        <button class="btn btn-warning btn-sm" wire:click='updateStatus()'><i
+                                class="ri-check-fill align-middle me-1"></i>
+                            Konfirmasi</button>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="card-body">
                 <div class="table-responsive table-card">

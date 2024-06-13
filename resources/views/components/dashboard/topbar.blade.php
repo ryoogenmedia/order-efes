@@ -375,8 +375,18 @@
                     <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
-                                alt="Header Avatar">
+                            @if (Auth::user()->foto)
+                            @if (Storage::exists( 'public/',Auth::user()->foto))
+                            <img class="rounded-circle header-profile-user"
+                                src="{{ asset(Storage::url(Auth::user()->foto)) }}" alt="Header Avatar">
+                            @else
+                            <img class="rounded-circle header-profile-user"
+                                src="{{ asset('assets/images/users/user-dummy-img.jpg') }}" alt="Header Avatar">
+                            @endif
+                            @else
+                            <img class="rounded-circle header-profile-user"
+                                src="{{ asset('assets/images/users/user-dummy-img.jpg') }}" alt="Header Avatar">
+                            @endif
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{
                                     Auth::user()->nama }}</span>
@@ -386,7 +396,7 @@
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header text-capitalize">Welcome {{ Auth::user()->nama }}!</h6>
-                        <a class="dropdown-item" href="pages-profile-settings.html"><i
+                        <a class="dropdown-item" href="{{ route('dashboard.setting') }}"><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Settings</span></a>
                         <a class="dropdown-item" href="{{ route('dashboard.logout') }}"><i

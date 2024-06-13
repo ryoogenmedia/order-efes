@@ -276,9 +276,17 @@
                                             class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back
                                     </button>
                                     <button type="button" class="btn btn-primary btn-label right ms-auto nexttab"
-                                        wire:click='createTransaction()' wire:loading.class='d-none'><i
-                                            class="ri-shopping-basket-line label-icon align-middle fs-16 ms-2"></i>Complete
-                                        Order</button>
+                                        wire:click='createTransaction()' wire:loading.attr='disabled'>
+                                        <i class="ri-shopping-basket-line label-icon align-middle fs-16 ms-2">
+                                        </i>
+                                        <span wire:loading.class='d-none'>
+                                            Complete Order
+                                        </span>
+                                        <span wire:loading>
+                                            Loading ...
+                                        </span>
+
+                                    </button>
                                 </div>
                             </div>
                             <!-- end tab pane -->

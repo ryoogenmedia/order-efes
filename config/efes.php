@@ -87,18 +87,19 @@ return [
                 'sub' => [],
                 'icon' => 'ri-dashboard-line'
             ],
-            'settings' => [
-                'title' => 'Settings',
-                'url' => 'setting',
-                'sub' => [],
-                'icon' => 'mdi mdi-cog-outline'
-            ],
             'pesanan' => [
                 'title' => 'pesanan',
                 'url' => 'pesanan',
                 'sub' => [],
                 'icon' => 'ri-file-list-3-line'
             ],
+            'settings' => [
+                'title' => 'Settings',
+                'url' => 'setting',
+                'sub' => [],
+                'icon' => 'mdi mdi-cog-outline'
+            ],
+
         ],
     ],
 

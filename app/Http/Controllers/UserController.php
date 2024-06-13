@@ -28,7 +28,7 @@ class UserController extends Controller
     }
     public function setting()
     {
-        return view('dashboard.pesan.single');
+        return view('dashboard.setting.profile');
     }
     public function pesanan()
     {

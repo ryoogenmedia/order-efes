@@ -66,6 +66,7 @@
 
 <!-- init js -->
 <script src="{{ asset('assets/js/pages/ecommerce-product-checkout.init.js') }}"></script>
+<script src="{{ asset('assets/js/pages/profile-setting.init.js') }}"></script>
 
 <!-- App js -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
