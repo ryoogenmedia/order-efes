@@ -45,7 +45,9 @@ class Profile extends Component
 
             // Store the uploaded image in the 'public' disk with the generated name
             $imagePath = $this->foto->storeAs('user', $imageName, 'public');
-            Storage::disk('public')->delete($this->data['foto']);
+            if ($this->data['foto'] != null) {
+                Storage::disk('public')->delete($this->data['foto']);
+            }
         } else {
             $imagePath = $this->data['foto'];
         }

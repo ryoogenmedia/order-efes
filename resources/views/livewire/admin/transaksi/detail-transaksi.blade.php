@@ -187,7 +187,7 @@
     </div>
     @endif
     <!--end col-->
-    <div class="col-md-6 ">
+    <div class="col-md-12 ">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex">
@@ -223,7 +223,7 @@
         <!--end card-->
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title mb-0"><i class="ri-secure-payment-line align-bottom me-1 text-muted"></i>Informasi
@@ -282,7 +282,7 @@
         <!--end card-->
     </div>
     <!--end col-->
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title mb-0"><i class="ri-map-pin-line align-middle me-1 text-muted"></i> Alamat
@@ -301,7 +301,7 @@
         </div>
         <!--end card-->
     </div>
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title mb-0"><i class="ri-map-pin-line align-middle me-1 text-muted"></i>Informasi

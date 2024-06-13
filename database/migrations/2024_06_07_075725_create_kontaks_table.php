@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('facebook');
             $table->string('twitter');
             $table->string('instagram');
+            $table->string('tentang')->nullable();
             $table->timestamps();
         });
     }

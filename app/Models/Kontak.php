@@ -19,5 +19,6 @@ class Kontak extends Model
         'facebook',
         'twitter',
         'instagram',
+        'tentang',
     ];
 }

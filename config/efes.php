@@ -8,13 +8,13 @@ return [
                 'sub' => [],
                 'icon' => 'ri-dashboard-line'
             ],
-            'tentang' => [
-                'title' => 'tentang',
-                'url' => 'tentang',
-                'sub' => [],
-                'icon' => 'ri-global-line'
+            // 'tentang' => [
+            //     'title' => 'tentang',
+            //     'url' => 'tentang',
+            //     'sub' => [],
+            //     'icon' => 'ri-global-line'
 
-            ],
+            // ],
             'produk' => [
                 'title' => 'produk',
                 'url' => 'produk',
@@ -77,13 +77,13 @@ return [
                 'icon' => 'ri-chat-3-line'
 
             ],
-            'kontak' => [
-                'title' => 'kontak',
-                'url' => 'kontak',
-                'sub' => [],
-                'icon' => 'ri-phone-line'
+            // 'kontak' => [
+            //     'title' => 'kontak',
+            //     'url' => 'kontak',
+            //     'sub' => [],
+            //     'icon' => 'ri-phone-line'
 
-            ],
+            // ],
         ],
     ],
     'user' => [
