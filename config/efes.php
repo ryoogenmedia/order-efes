@@ -77,13 +77,13 @@ return [
                 'icon' => 'ri-chat-3-line'
 
             ],
-            // 'kontak' => [
-            //     'title' => 'kontak',
-            //     'url' => 'kontak',
-            //     'sub' => [],
-            //     'icon' => 'ri-phone-line'
+                // 'kontak' => [
+                //     'title' => 'kontak',
+                //     'url' => 'kontak',
+                //     'sub' => [],
+                //     'icon' => 'ri-phone-line'
 
-            // ],
+                // ],
         ],
     ],
     'user' => [
