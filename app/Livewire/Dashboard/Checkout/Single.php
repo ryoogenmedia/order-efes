@@ -71,12 +71,31 @@ class Single extends Component
         $this->kontak = $kontak->first();
     }
 
+    public function pullOngkir()
+    {
+        $this->pull([
+            'biayaOngkir', 'kecamatan', 'metode', 'kota'
+        ]);
+    }
+
     public function render()
     {
-        if ($this->provinsi != '') {
-            $this->biayaOngkir = Ongkir::where('provinsi', 'like', '%' . $this->provinsi . '%')->first()->harga;
+        if ($this->provinsi != '' && $this->kota != '' && $this->kecamatan != '' && $this->metode != '') {
+            $ongkir = Ongkir::where([
+                ['provinsi', 'like', '%' . $this->provinsi . '%'],
+                ['kota', 'like', '%' . $this->kota . '%'],
+                ['kecamatan', 'like', '%' . $this->kecamatan . '%'],
+            ])->first();
+
+            // Check if a matching record was found
+            if ($ongkir) {
+                $this->biayaOngkir = $ongkir->harga;
+            } else {
+                // Handle case when no matching record is found
+                $this->biayaOngkir = 0; // Or any default value you prefer
+            }
         } else {
-            $this->pull('biayaOngkir');
+            $this->biayaOngkir = 0; // Reset biayaOngkir if the conditions are not met
         }
         $this->total = ($this->produk->harga * $this->jml_pesan) + $this->biayaOngkir;
         return view('livewire.dashboard.checkout.single');
@@ -98,14 +117,22 @@ class Single extends Component
     public function createTransaction()
     {
         $this->validate();
+
         try {
             $this->kode_transaksi = 'TRX-' . Str::uuid();
+            if ($this->provinsi != '' && $this->kota != '' && $this->kecamatan != '' && $this->metode != '') {
+                $ongkir = Ongkir::where([
+                    ['provinsi', 'like', '%' . $this->provinsi . '%'],
+                    ['kota', 'like', '%' . $this->kota . '%'],
+                    ['kecamatan', 'like', '%' . $this->kecamatan . '%'],
+                ])->first()->id;
+            }
             $transaksi = Transaksi::create([
                 'kode_transaksi' => $this->kode_transaksi,
                 'alamat' => $this->alamat,
                 'total' => $this->total,
                 'resi' => 'tidak ada',
-                'ongkir_id' => Ongkir::where('provinsi', 'like', '%' . $this->provinsi . '%')->first()->id,
+                'ongkir_id' => $ongkir,
                 'user_id' => Auth::user()->id
             ]);
             if ($transaksi != null) {
@@ -138,6 +165,7 @@ class Single extends Component
             $this->isFinish = true;
             flash()->success('Ordering Success');
         } catch (\Exception $e) {
+            dd($e);
             flash()->error("Terjadi kesalahan: " . $e->getMessage());
         }
     }

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('jml_pesan')->default(1);
             $table->string('desain')->nullable();
             $table->text('catatan')->nullable();
-            $table->foreignId('produk_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('produk_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('testimonis', function (Blueprint $table) {
             $table->id();
             $table->text('testimoni')->nullable();
-            $table->boolean('is_show')->default(false);
+            $table->boolean('is_show')->default(true);
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

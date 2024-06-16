@@ -1,4 +1,4 @@
-<div class="card">
+{{-- <div class="card">
     <div class="card-header">
         <div class="d-flex mb-3">
             <div class="flex-grow-1">
@@ -42,4 +42,35 @@
             </div>
         </div>
     </div>
+</div> --}}
+<div>
+    <div class="row">
+        <div class="col-12">
+
+            <div class="form-group text-center text-wrap  ">
+                @php
+
+                if ($kategori_id !== null){
+                $all = '-outline' ;
+                } else {
+                $all = '' ;
+                }
+
+                @endphp
+                <button class="btn btn{{ $all }}-info btn-sm" wire:click='filterClear()'>ALL</button>
+                @foreach ($kategoris as $kategori )
+                @php
+                $color = '-outline' ;
+                if ($kategori->id == $kategori_id) {
+                $color = '' ;
+                }
+                @endphp
+                <button class="btn btn{{ $color }}-info btn-sm text-capitalize"
+                    wire:click="idChange({{ $kategori->id }})">{{
+                    $kategori->nama_kategori }}</button>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
 </div>

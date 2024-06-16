@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('desain')->nullable();
             $table->string('file')->nullable();
             $table->string('catatan')->nullable();
-            $table->foreignId('produk_id')->constrained();
+            $table->foreignId('produk_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('transaksi_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

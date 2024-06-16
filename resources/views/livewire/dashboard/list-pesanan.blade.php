@@ -4,7 +4,7 @@
             <div class="card-header border-0">
                 <div class="row align-items-center gy-3">
                     <div class="col-sm">
-                        <h5 class="card-title mb-0">Order History {{ $status }}</h5>
+                        <h5 class="card-title mb-0">Pesanan</h5>
                     </div>
                     <div class="col-sm-auto">
                         <div class="d-flex gap-1 flex-wrap">

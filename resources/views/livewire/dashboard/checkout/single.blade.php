@@ -17,7 +17,7 @@
                             <p class="text-muted">You will receive an order confirmation email with details of your
                                 order.</p>
 
-                            <h3 class="fw-semibold">Order ID: <a href="{{ route('dashboard.index') }}"
+                            <h3 class="fw-semibold">Order ID: <a href="{{ route('dashboard.pesanan') }}"
                                     class="text-decoration-underline">{{ $kode_transaksi }}</a></h3>
                         </div>
                     </div>
@@ -100,19 +100,25 @@
                                                 @enderror
                                             </label>
                                             <textarea class="form-control" id="VertimeassageInput" rows="5"
-                                                placeholder="Catatan (optional)" wire:model='catatan'></textarea>
+                                                placeholder="Silahkan Paparkan Informasi dan Detail tambahan untuk pesanan anda "
+                                                wire:model='catatan'></textarea>
                                         </div>
                                     </div>
 
                                     <div>
                                         <h5 class="mt-4">Informasi Pengiriman</h5>
-                                        <p class="text-muted mb-4"></p>
+                                        <p class="text-muted mb-4"><span class="text-info"># <b>NOTE</b> Biaya
+                                                Pengiriman
+                                                dipengaruhi oleh
+                                                jarak dan
+                                                waktu pengiriman</span></p>
                                     </div>
                                     <div class="mt-4">
                                         <div class="row gy-3">
                                             <div class="col-md-6">
                                                 <label for="inputState" class="form-label">Provinsi</label>
-                                                <select id="inputState" class="form-select" wire:model.live='provinsi'>
+                                                <select id="inputState" class="form-select" wire:model.live='provinsi'
+                                                    wire:change='pullOngkir()'>
                                                     <option value="">Pilih Provinsi</option>
                                                     @foreach ($ongkirs->get() as $ongkir )
                                                     <option value="{{ $ongkir->provinsi }}">{{ $ongkir->provinsi }}
@@ -121,7 +127,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="inputState" class="form-label">Provinsi</label>
+                                                <label for="inputState" class="form-label">Kota</label>
                                                 <select id="inputState" class="form-select" wire:model.live='kota'>
                                                     <option selected>Pilih Kota</option>
                                                     @foreach ($ongkirs->where('provinsi' , 'like' ,
@@ -144,7 +150,9 @@
                                             <div class="col-md-6">
                                                 <label for="inputState" class="form-label">Metode </label>
                                                 <select id="inputState" class="form-select" wire:model.live='metode'>
-                                                    <option selected>Pilih Metode Pengiriman</option>
+                                                    <option selected>Pilih Metode Pengiriman
+
+                                                    </option>
                                                     @foreach ($ongkirs->where('provinsi' , 'like' ,
                                                     '%'.$provinsi.'%')->get() as $ongkir )
                                                     <option value="{{ $ongkir->metode }}">{{ $ongkir->metode }}
@@ -153,7 +161,11 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-12">
-                                                <label for="alamat" class="form-label">Alamat Lengkap </label>
+                                                <label for="alamat" class="form-label">Alamat Lengkap
+                                                    <p class="text-muted mb-4"><span class="text-info">#
+                                                            <b>NOTE</b> Alamat yang lebih spesifik seperti , warna rumah
+                                                            , lantai gedung , nomor Blok , dsb.</span></p>
+                                                </label>
                                                 <textarea id="alamat" class="form-control" rows="3"
                                                     placeholder="Alamat Lengkap" wire:model.live='alamat'></textarea>
                                             </div>
@@ -306,7 +318,7 @@
                 <div class="card-header">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <h5 class="card-title mb-0">Order Summary</h5>
+                            <h5 class="card-title mb-0">Detail Pembayaran</h5>
                         </div>
                     </div>
                 </div>
@@ -316,7 +328,7 @@
                             <thead class="table-light text-muted">
                                 <tr>
                                     <th style="width: 90px;" scope="col">Produk</th>
-                                    <th scope="col">Produk Info</th>
+                                    <th scope="col">Informasi Produk</th>
                                     <th scope="col" class="text-end">Harga</th>
                                 </tr>
                             </thead>
