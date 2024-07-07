@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <div class="swiper candidate-swiper">
                     <div class="swiper-wrapper">
-                        @foreach ($testimoni as $testi )
+                        {{-- @foreach ($testimoni as $testi )
                         <div class="swiper-slide">
                             <div class="card text-center">
                                 <div class="card-body p-4">
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        @endforeach --}}
                     </div>
                 </div>
             </div>
