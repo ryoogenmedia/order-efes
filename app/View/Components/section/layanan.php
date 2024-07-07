@@ -22,7 +22,7 @@ class layanan extends Component
      */
     public function render(): View|Closure|string
     {
-        $layanan = modelLayanan::getLayanan();
+        $layanan = config('layanans');
         return view('components.section.layanan', ['layanans' => $layanan]);
     }
 }
