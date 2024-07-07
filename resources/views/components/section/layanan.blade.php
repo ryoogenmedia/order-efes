@@ -10,7 +10,7 @@
         </div><!-- end row -->
 
         <div class="row g-4">
-            {{-- @foreach ($layanans as $layanan )
+            @foreach ($layanans as $layanan )
 
             <div class="col-lg-4 col-md-6 col-sm-12 d-flex">
                 <div class="card text-center border w-100">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach --}}
+            @endforeach
             <!-- end col -->
         </div><!-- end row -->
     </div><!-- end container -->
